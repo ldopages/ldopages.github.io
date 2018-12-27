@@ -4,8 +4,8 @@ InspectionFee_Prices["InspNo"] = 0;
 
 var DemolitionFee_Prices = new Array();
 DemolitionFee_Prices["ResStruct4UnitsMax"] = 125;
-DemolitionFee_Prices["NonResApartments"] = 400;
-DemolitionFee_Prices["NonResStructOver10k"] = 250;
+DemolitionFee_Prices["NonResApartments"] = 250;
+DemolitionFee_Prices["NonResStructOver10k"] = 400;
 
 
 
