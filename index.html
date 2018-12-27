@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Permit Calculator</title>
+    <script type="text/javascript" src="js/formcalculations.js"></script>
+    <link href="styles/cakeform.css" rel="stylesheet" type="text/css" />
+    <link href="styles/normalize.css" rel="stylesheet" type="text/css" />
+        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/main.css">
+  </head>
+
+  <body onload='hideTotal()'>
+    <div id="wrap">
+      <form action="" id="cakeform" onsubmit="return false;">
+        <div>
+          <div class="cont_order">
+            <h1>Calculate Permit</h1>
+            <fieldset>
+              <legend><span class = "number">1</span>Job Value</legend>
+              <input type="text" id="ValuationChoice" name='ValuationChoice' />
+           </fieldset>
+            
+            <fieldset>
+              <legend><span class = "number">2</span>Percentage for Plans Review</legend>
+              
+              <select id=plansReviewPercentage name=plansReviewPercentage onchange = "calculateTotal()">
+              <option Value = "None">Select Percentage</option>
+              <option Value = "20 Percent">20%</option>
+              <option Value = "30 Percent">30%</option>
+              <option Value = "40 Percent">40%</option>
+              <option Value = "50 Percent">50%</option>
+              </select>
+            </fieldset>
+            <fieldset>
+              <legend><span class = "number">3</span>Inspection Fee</legend>
+              <label class='radiolabel'><input type="radio"  name="InspYesOrNO" value="InspYes" onclick="calculateTotal()" />Yes</label>
+              <label class='radiolabel'><input type="radio"  name="InspYesOrNO" value="InspNo" onclick="calculateTotal()" />No</label>
+            </fieldset>
+            <fieldset>
+              <legend><span class = "number">4</span>Demolition Fee</legend>
+              <label class='radiolabel'><input type="radio"  name="ChooseDemoType" value="ResStruct4UnitsMax" onclick="calculateTotal()" />Residential Structures(4 Units Max)</label>
+              <label class='radiolabel'><input type="radio"  name="ChooseDemoType" value="NonResApartments" onclick="calculateTotal()" />Non Residential and Apartments</label>
+              <label class='radiolabel'><input type="radio"  name="ChooseDemoType" value="NonResStructOver10k" onclick="calculateTotal()" />Non Residential Structures over 10,000 sq. ft</label>
+            </fieldset>
+             <fieldset>
+               <legend><span class = "number">5</span>Moving Fee</legend>
+               <input type="checkbox" id="includeMovingFee" name='includeMovingFee' onclick="calculateTotal()" />Is Required
+              
+             </fieldset>
+            
+              <div id="permitFee"></div>
+              <div id="plansreviewFee"></div>
+              <div id="inspectionFee"></div>
+              <div id="movingFee"></div>
+              <div id="demoFee"></div>
+              <div id="techFee"></div>
+              <div id="adminFee"></div>
+              <br/>
+              <div id="totalPrice"></div>
+
+            <button type="submit" value='Calculate Permit' onclick="calculateTotal()">Calculate</button>  
+            <button type="submit" value='Calculate Permit' onclick="clearForm()">Clear</button>
+              
+            
+          </div>
+
+        </div>
+      </form>
+    </div>
+    <!--End of wrap-->
+
+  </body>
+
+</html>
