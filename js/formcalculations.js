@@ -15,6 +15,7 @@ PlansReview_Percentages ["20 Percent"]=20;
 PlansReview_Percentages ["30 Percent"]=30;
 PlansReview_Percentages ["40 Percent"]=40;
 PlansReview_Percentages ["50 Percent"]=50;
+PlansReview_Percentages ["70 Percent"]=70;
 
 function getInspectionFee_Prices() {
   var cakeSizePrice = 0;
