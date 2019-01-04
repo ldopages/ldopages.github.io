@@ -31,7 +31,6 @@
               <option Value = "30 Percent">30%</option>
               <option Value = "40 Percent">40%</option>
               <option Value = "50 Percent">50%</option>
-			  <option Value = "70 Percent">70%</option>
               </select>
             </fieldset>
             <fieldset>
@@ -47,9 +46,13 @@
             </fieldset>
              <fieldset>
                <legend><span class = "number">5</span>Moving Fee</legend>
-               <input type="checkbox" id="includeMovingFee" name='includeMovingFee' onclick="calculateTotal()" />Is Required
+               <input type="checkbox" id="includeMovingFee" name='includeMovingFee' onclick="calculateTotal()" />Charge a Moving Fee
               
              </fieldset>
+            <fieldset>
+              <legend><span class = "number">6</span>CO Fee</legend>
+              <input type="checkbox" id="includeCOFee" name='includeCOFee' onclick="calculateTotal()" />Charge a CO Fee
+            </fieldset>
             
               <div id="permitFee"></div>
               <div id="plansreviewFee"></div>
@@ -58,6 +61,7 @@
               <div id="demoFee"></div>
               <div id="techFee"></div>
               <div id="adminFee"></div>
+              <div id="coFee"></div>
               <br/>
               <div id="totalPrice"></div>
 

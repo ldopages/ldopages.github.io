@@ -2,11 +2,11 @@ var InspectionFee_Prices = new Array();
 InspectionFee_Prices["InspYes"] = 25;
 InspectionFee_Prices["InspNo"] = 0;
 
+
 var DemolitionFee_Prices = new Array();
 DemolitionFee_Prices["ResStruct4UnitsMax"] = 125;
 DemolitionFee_Prices["NonResApartments"] = 250;
 DemolitionFee_Prices["NonResStructOver10k"] = 400;
-
 
 
 var PlansReview_Percentages = new Array();
@@ -69,6 +69,11 @@ function GetMovingFee_Price() {
   return candlePrice;
 }
 
+
+
+
+
+
 function GetPermit_Price() {
 
   var PermitCost = 0
@@ -113,14 +118,28 @@ function GetPlansReviwFee_Price() {
   return plansReviewFee_Price;
 }
 
+
+function GetCOFee_Price() {
+  var coPrice = 0;
+  var theForm = document.forms["cakeform"];
+  var includeCOFee = theForm.elements["includeCOFee"];
+
+  //If they checked the box set candlePrice to 5
+  if (includeCOFee.checked == true) {
+    coPrice = 15;
+  }
+  //finally we return the candlePrice
+  return coPrice;
+}
+
 function calculateTotal() {
 
-  var TotalPermitPrice = getInspectionFee_Prices() + getDemolitionFee_Prices() + GetMovingFee_Price() +  GetPermit_Price() + ((GetPlansReviwFee_Price()/100) * GetPermit_Price()) + 5 + 10;
+  var TotalPermitPrice = getInspectionFee_Prices() + getDemolitionFee_Prices() + GetMovingFee_Price() +  GetPermit_Price() + ((GetPlansReviwFee_Price()/100) * GetPermit_Price()) + 5 + 10 + GetCOFee_Price() ;
 
   //display the result
   var divobj = document.getElementById('totalPrice');
   divobj.style.display = 'block';
-  divobj.innerHTML = "Total Price For the Permit $" + TotalPermitPrice;
+  divobj.innerHTML = "Total Price For the Permit $" + ( TotalPermitPrice.toFixed(2));
 
   var divobj2 = document.getElementById('techFee');
   divobj2.style.display = 'block';
@@ -143,15 +162,18 @@ function calculateTotal() {
   divobj6.innerHTML = "Admin: $" + 5;
 
   var divobj7 = document.getElementById('permitFee');
+  var permitFeeSubtotal = GetPermit_Price();
   divobj7.style.display = 'block';
-  divobj7.innerHTML = "Permit Fee: $" + GetPermit_Price();
+  divobj7.innerHTML = "Permit Fee: $" + ( permitFeeSubtotal.toFixed(2));
   
   var divobj8 = document.getElementById('plansreviewFee');
+  var planReviewSubtotal = ((GetPlansReviwFee_Price()/100) * GetPermit_Price());
   divobj8.style.display = 'block';
-  divobj8.innerHTML = "Plans Review Fee: $" + ((GetPlansReviwFee_Price()/100) * GetPermit_Price());
-//divobj8.innerHTML = "Plans Review Fee: $" + ((GetPlansReviwFee_Price()/100) * GetPermit_Price());
+  divobj8.innerHTML = "Plans Review Fee: $" + ( planReviewSubtotal.toFixed(2));
 
-
+  var divobj9 = document.getElementById('coFee');
+  divobj9.style.display = 'block';
+  divobj9.innerHTML = "CO Fee: $" + GetCOFee_Price();
 }
 
 function clearForm() {
@@ -183,5 +205,8 @@ function hideTotal() {
   divobj7.style.display = 'none';
   
   var divobj8 = document.getElementById('plansreviewFee');
+  divobj8.style.display = 'none';
+  
+  var divobj8 = document.getElementById('coFee');
   divobj8.style.display = 'none';
 }
